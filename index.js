@@ -186,7 +186,10 @@ export default class PickerAndroid extends Component{
 
 			middleItems[index] = <Text
 									key={'mid'+index}
-									style={[styles.middleText, this.state.itemStyle]}>{item.label}
+									style={[styles.middleText, this.state.itemStyle]}
+									onPress={() => {
+									this._moveTo(index);
+								}}>{item.label}
 								</Text>;
 
 			downItems[index] = <Text
@@ -228,7 +231,7 @@ export default class PickerAndroid extends Component{
 		};
 		
 		return (
-			//total to be 90*2+40=220 height
+			//total to be 90*2+40 =220 height
 			<View style={[styles.container, this.state.pickerStyle]} {...this._panResponder.panHandlers}>
 
 				<View style={styles.up}>
@@ -263,7 +266,7 @@ let styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		justifyContent: 'center',
-		alignItems: 'center',
+		// alignItems: 'center',
 		//this is very important
 		backgroundColor: null
 	},
@@ -272,8 +275,6 @@ let styles = StyleSheet.create({
 		overflow: 'hidden'
 	},
 	upView: {
-		justifyContent: 'flex-start',
-		alignItems: 'center'
 	},
 	upText: {
 		paddingTop: 0,
@@ -283,20 +284,20 @@ let styles = StyleSheet.create({
 		opacity: .5,
 		paddingBottom: 0,
 		marginTop: 0,
-		marginBottom: 0
+		marginBottom: 0,
+		alignSelf: 'stretch',
+		textAlign: 'center',
 	},
 	middle: {
 		height: 40,
-		width: width,
+		// width: width,
 		overflow: 'hidden',
 		borderColor: '#aaa',
 		borderTopWidth: 1/ratio,
 		borderBottomWidth: 1/ratio
 	},
 	middleView: {
-		height: 40,
-		justifyContent: 'flex-start',
-		alignItems: 'center'
+		flex: 1,
 	},
 	middleText: {
 		paddingTop: 0,
@@ -305,16 +306,15 @@ let styles = StyleSheet.create({
 		fontSize: 28,
 		paddingBottom: 0,
 		marginTop: 0,
-		marginBottom: 0
+		marginBottom: 0,
+		alignSelf: 'stretch',
+		textAlign: 'center',
 	},
 	down: {
 		height: 90,
 		overflow: 'hidden'
 	},
 	downView: {
-		overflow: 'hidden',
-		justifyContent: 'flex-start',
-		alignItems: 'center'
 	},
 	downText: {
 		paddingTop: 0,
@@ -324,7 +324,8 @@ let styles = StyleSheet.create({
 		opacity: .5,
 		paddingBottom: 0,
 		marginTop: 0,
-		marginBottom: 0
+		marginBottom: 0,
+		textAlign: 'center',
 	}
 
 });
