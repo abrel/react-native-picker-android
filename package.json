@@ -1,14 +1,14 @@
 {
-  "name": "react-native-picker-android",
-  "version": "1.0.3",
-  "description": "react-native-picker-android",
+  "name": "@cqingwang/react-native-picker-android",
+  "version": "1.0.5",
+  "description": "react-native-picker-android-in RN0.42.2",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/beefe/react-native-picker-android.git"
+    "url": "git+https://github.com/cqingwang/react-native-picker-android.git"
   },
   "keywords": [
     "react-native",
@@ -16,15 +16,15 @@
     "picker"
   ],
   "author": {
-    "name": "rsk",
-    "email": "rsk_rsk@163.com"
+    "name": "cqingwang",
+    "email": "wangchangqing_2009@126.com"
   },
   "engines": {
     "node": ">=4"
   },
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/beefe/react-native-picker-android/issues"
+    "url": "https://github.com/cqingwang/react-native-picker-android/issues"
   },
-  "homepage": "https://github.com/beefe/react-native-picker-android#readme"
+  "homepage": "https://github.com/cqingwang/react-native-picker-android#readme"
 }
