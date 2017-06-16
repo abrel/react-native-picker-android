@@ -177,6 +177,7 @@ export default class PickerAndroid extends Component{
 
 			upItems[index] = <Text
 				key={'up'+index}
+				numberOfLines={1}
 				style={[styles.upText, this.state.itemStyle]}
 				onPress={() => {
 									this._moveTo(index);
@@ -186,6 +187,7 @@ export default class PickerAndroid extends Component{
 
 			middleItems[index] = <Text
 				key={'mid'+index}
+				numberOfLines={1}
 				style={[styles.middleText, this.state.itemStyle]}
 				onPress={() => {
 									this._moveTo(index);
@@ -194,6 +196,7 @@ export default class PickerAndroid extends Component{
 
 			downItems[index] = <Text
 				key={'down'+index}
+				numberOfLines={1}
 				style={[styles.downText, this.state.itemStyle]}
 				onPress={() => {
 										this._moveTo(index);
