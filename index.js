@@ -148,7 +148,7 @@ export default class PickerAndroid extends Component{
 	}
 
 	_handlePanResponderRelease(evt, gestureState){
-		let middleHeight = this.middleHeight;
+		let middleHeight = this.middleHeight || 0;
 		this.index = middleHeight % 40 >= 20 ? Math.ceil(middleHeight / 40) : Math.floor(middleHeight / 40);
 		this._move(0);
 		this._onValueChange();
@@ -213,7 +213,9 @@ export default class PickerAndroid extends Component{
 		//but PickerIOS only passed value, so we set label to be the second argument
 		//add by zooble @2015-12-10
 		var curItem = this.state.items[this.index];
-		this.state.onValueChange && this.state.onValueChange(curItem.value, curItem.label);
+		if(curItem && this.state.onValueChange ){
+			this.state.onValueChange(curItem.value, curItem.label);
+		}
 	}
 
 	render(){
