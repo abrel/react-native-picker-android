@@ -103,11 +103,6 @@ export default class PickerAndroid extends Component{
 				marginTop: -index * 40 + dy,
 			},
 		});
-		this.down && this.down.setNativeProps({
-			style: {
-				marginTop: (-index - 1) * 30 + dy * .75,
-			},
-		});
 	}
 
 	_moveTo(index){
@@ -173,7 +168,7 @@ export default class PickerAndroid extends Component{
 	_renderItems(items){
 		//value was used to watch the change of picker
 		//label was used to display
-		let upItems = [], middleItems = [], downItems = [];
+		let upItems = [], middleItems = [];
 		items.forEach((item, index) => {
 
 			upItems[index] = <Text
@@ -187,29 +182,17 @@ export default class PickerAndroid extends Component{
 
 			middleItems[index] = <Text
 									key={'mid'+index}
-									style={[styles.middleText, this.state.itemStyle]}
+									style={[styles.middleText, this.state.itemStyle, { backgroundColor: 'white' }]}
 									onPress={() => {
 									this._moveTo(index);
 								}}>{item.label}
 								</Text>;
 
-			downItems[index] = <Text
-									key={'down'+index}
-									style={[styles.downText, this.state.itemStyle]}
-									onPress={() => {
-										this._moveTo(index);
-									}} >
-									{item.label}
-								</Text>;
-
 		});
-		return { upItems, middleItems, downItems, };
+		return { upItems, middleItems };
 	}
 
 	_onValueChange(){
-		//the current picked label was more expected to be passed,
-		//but PickerIOS only passed value, so we set label to be the second argument
-		//add by zooble @2015-12-10
 		var curItem = this.state.items[this.index];
 		this.state.onValueChange && this.state.onValueChange(curItem.value, curItem.label);
 	}
@@ -226,13 +209,8 @@ export default class PickerAndroid extends Component{
 		let middleViewStyle = {
 			marginTop:  -index * 40,
 		};
-		let downViewStyle = {
-			marginTop: (-index - 1) * 30,
-			height:  length * 30,
-		};
 
 		return (
-			//total to be 90*2+40 =220 height
 			<View style={[styles.container, this.state.pickerStyle]} {...this._panResponder.panHandlers}>
 
 				<View style={styles.up}>
@@ -247,11 +225,7 @@ export default class PickerAndroid extends Component{
 					</View>
 				</View>
 
-				<View style={styles.down}>
-					<View style={[styles.downView, downViewStyle]} ref={(down) => { this.down = down }} >
-						{ items.downItems }
-					</View>
-				</View>
+				<View style={styles.down} />
 
 			</View>
 		);
@@ -267,9 +241,7 @@ let styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		justifyContent: 'center',
-		// alignItems: 'center',
-		//this is very important
-		backgroundColor: null
+		backgroundColor: 'white',
 	},
 	up: {
 		height: 90,
@@ -281,8 +253,8 @@ let styles = StyleSheet.create({
 		paddingTop: 0,
 		height: 30,
 		fontSize: 20,
-		color: '#000',
-		opacity: .5,
+		color: '#999',
+		opacity: 1,
 		paddingBottom: 0,
 		marginTop: 0,
 		marginBottom: 0,
@@ -315,18 +287,4 @@ let styles = StyleSheet.create({
 		height: 90,
 		overflow: 'hidden'
 	},
-	downView: {
-	},
-	downText: {
-		paddingTop: 0,
-		height: 30,
-		fontSize: 16,
-		color: '#000',
-		opacity: .5,
-		paddingBottom: 0,
-		marginTop: 0,
-		marginBottom: 0,
-		textAlign: 'center',
-	}
-
 });
