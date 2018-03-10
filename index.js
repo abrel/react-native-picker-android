@@ -9,7 +9,8 @@ import {
 	Image,
 	Dimensions,
 	PixelRatio,
-	PanResponder
+	PanResponder,
+  ViewPropTypes,
 } from 'react-native';
 
 class PickerAndroidItem extends Component{
@@ -35,7 +36,7 @@ export default class PickerAndroid extends Component{
 
 	static propTypes = {
 		//picker's style
-		pickerStyle: View.propTypes.style,
+		pickerStyle: ViewPropTypes.style,
 		//picker item's style
 		itemStyle: Text.propTypes.style,
 		//picked value changed then call this function
